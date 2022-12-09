@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <title>Steam Game Recommender</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href=https://imgur.com/VzCPhCb.jpg> 
+	<img style='height: 100%; width: 100%; object-fit: contain' src = "https://imgur.com/KfbGhkv.jpg" alt>
+    
+</head>
+
+<body>
+    <div id="content">
+        <form action="FilterGames.php" method="get">
+	    <div>
+            <fieldset>	    
+		<legend><b style="color: #242d3e; background-color: white; border-radius: 6px; padding: 4px; font-family: 'Gill Sans', sans-serif;"> Filter Games</b></legend>
+		<div class="inputs">
+			<div class="tooltip" style="font-family: 'Gill Sans', sans-serif;">?
+				<span class="tooltiptext" style="font-family: 'Gill Sans', sans-serif;">Here you can filter games according to your preferences, getting a list of the resulting games</span>
+			</div>   
+			<legend style="color: azure; font-family: 'Gill Sans', sans-serif;"> Maximum Price (USD)</legend>
+                <!-- Text input-->
+                <div>
+                    <label>
+                        <input name="precio">
+                    </label>
+                </div>
+			<legend style="color: azure; font-family: 'Gill Sans', sans-serif;"> Required Age</legend>
+                <!-- Text input-->
+                <div>
+                    <label>
+                        <input name="edad">
+                    </label>
+                </div>
+			<legend style="color: azure; font-family: 'Gill Sans', sans-serif;"> Categories 
+				<div class="tooltip" style="font-family: 'Gill Sans', sans-serif; position: absolue; left: 40%;">?
+				<span class="tooltiptext" style="font-family: 'Gill Sans', sans-serif; margin-left: 25px">Categories are things such as: Multi-player, PvP, Co-op and more. For a complete list go to the FAQ below.</span>
+				</div>  
+			</legend>
+                <!-- Text input-->
+                <div>
+                    <label>
+                        <input type="text" name="categoria1" value="%">
+                    </label>
+				</div>
+				<div>
+                    <label>
+                        <input type="text" name="categoria2" value="%">
+                    </label>
+				</div>
+				<div>
+                    <label>
+                        <input type="text" name="categoria3" value="%">
+                    </label>
+                </div>
+			<legend style="color: azure; font-family: 'Gill Sans', sans-serif;"> Tags 
+				<div class="tooltip" style="font-family: 'Gill Sans', sans-serif; position: absolue; left: 40%;">?
+				<span class="tooltiptext" style="font-family: 'Gill Sans', sans-serif; margin-left: 25px">Tags are things such as: Action, FPS, Survival and more. For a complete list go to the FAQ below.</span>
+				</div>  
+			</legend>
+                <!-- Text input-->
+                <div>
+                    <label>
+                        <input type="text" name="tag1" value="%">
+                    </label>
+		    		<label>
+                        <input type="text" name="tag2" value="%">
+                    </label>
+				<div>
+		    		<label>
+                        <input type="text" name="tag3" value="%">
+                    </label>
+					<label>
+                        <input type="text" name="tag4" value="%">
+                    </label>
+					</div>
+				<div>
+		    		<label>
+                        <input type="text" name="tag5" value="%">
+                    </label>
+                </div>
+			<legend style="color: azure; font-family: 'Gill Sans', sans-serif;"> Languages </legend>
+                <!-- Text input-->
+                <div>
+                    <label>
+                        <input type="text" name="idioma1" value="%">
+                    </label>
+				</div>
+				<div>
+                    <label>
+                        <input type="text" name="idioma2" value="%">
+                    </label>
+				</div>
+				<div>
+                    <label>
+                        <input type="text" name="idioma3" value="%">
+                    </label>
+                </div>
+			<legend style="color: azure; font-family: 'Gill Sans', sans-serif;"> Operative System </legend>
+                <!-- Text input-->
+                <div>
+                    <input type="checkbox" name="os1" value="checkbox"> <label for="os1" style="color: azure; font-family: 'Gill Sans', sans-serif;">Windows</label>
+                    <input type="checkbox" name="os2" value="second_checkbox"> <label for="os2" style="color: azure; font-family: 'Gill Sans', sans-serif;">Mac</label>
+                </div>
+                <!-- Button -->
+                <div>
+                    <input type="submit" value="Search">
+                </div>
+		</div>
+            </fieldset>
+	    </div>
+        </form>
+    </div>
+	<div>
+	<fieldset style="position: absolute; left: 70%; top: 55%; margin-left: 150px; margin-right: 150px; grid-template-columns: 1fr;">
+		<legend style="color: #242d3e; background-color: white; border-radius: 6px; padding: 4px; font-family: 'Gill Sans', sans-serif;"> Tip </legend>
+		<div>
+			<legend style="color: azure; font-family: 'Gill Sans', sans-serif;">If you do not want to complete a field, leave the "%" that is set.</legend>
+		</div>
+	</fieldset>
+	</div>
+
+	<div>
+		<fieldset style="position: absolute; left: 70%; top: 100%; margin-left: 150px; margin-right: 150px; grid-template-columns: 1fr;">
+			<legend style="color: #242d3e; background-color: white; border-radius: 6px; padding: 4px; font-family: 'Gill Sans', sans-serif;"> Tip </legend>
+			<div>
+				<legend style="color: azure; font-family: 'Gill Sans', sans-serif;">You can use either Name or Appid to search a game.</legend>
+			</div>
+		</fieldset>
+		</div>
+
+	<div id="content">
+		<form action="GameSearcher.php" method="get">
+			<fieldset>
+				<legend><b style="color: #242d3e; background-color: white; border-radius: 6px; padding: 4px; font-family: 'Gill Sans', sans-serif;">Game Searcher</b></legend>
+				<div class="inputs">
+				<div>
+					<legend style="color: azure; font-family: 'Gill Sans', sans-serif;">Name</legend>
+					<label>
+						<input name="name" value='%'>
+					</label>
+				</div>
+				<div>
+					<legend style="color: azure; font-family: 'Gill Sans', sans-serif;">Appid</legend>
+					<label>
+						<input name="appid">
+					</label>
+				</div>
+				<div>
+					<input type="submit" value="Search">
+				</div>
+				</div>
+				<div class="tooltip" style="font-family: 'Gill Sans', sans-serif;">? 
+					<span class="tooltiptext" style="font-family: 'Gill Sans', sans-serif;">If you found a game that caught your interest, look it up here for more information.</span>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+	<div id="content">
+		<form action="CanIRunIt.php" method="get">
+			<fieldset>
+				<legend><b style="color: #242d3e; background-color: white; border-radius: 6px; padding: 4px; font-family: 'Gill Sans', sans-serif;">Can I run it?</b></legend>
+				<div class="inputs">
+				<div>
+					<legend style="color: azure; font-family: 'Gill Sans', sans-serif;">Name</legend>
+					<label>
+						<input name="name" value='%'>
+					</label>
+				</div>
+				<div>
+					<legend style="color: azure; font-family: 'Gill Sans', sans-serif;">Appid</legend>
+					<label>
+						<input name="appid" value=''>
+					</label>
+				</div>
+				<div>
+					<input type="submit" value="Search">
+				</div>
+				</div>
+				<div class="tooltip" style="font-family: 'Gill Sans', sans-serif;">?
+					<span class="tooltiptext" style="font-family: 'Gill Sans', sans-serif;">If you want to know the requirements to run a game, look it up here.</span>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+	<div id="content">
+		<form action="SimilarGames.php" method="get">
+			<fieldset>
+				<legend><b style="color: #242d3e; background-color: white; border-radius: 6px; padding: 4px; font-family: 'Gill Sans', sans-serif;">Similar Games</b></legend>
+				<div class="inputs">
+				<div>
+					<legend style="color: azure; font-family: 'Gill Sans', sans-serif;">Name</legend>
+					<label>
+						<input name="name" value='%'>
+					</label>
+				</div>
+				<div>
+					<legend style="color: azure; font-family: 'Gill Sans', sans-serif;">Appid</legend>
+					<label>
+						<input name="appid" value=''>
+					</label>
+				</div>
+				<div>
+					<input type="submit" value="Search">
+				</div>
+				</div>
+				<div class="tooltip" style="font-family: 'Gill Sans', sans-serif;">?
+					<span class="tooltiptext" style="font-family: 'Gill Sans', sans-serif;">If you like a game and want to see something similar, search for the title here and we will recommend something for you.</span>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+	<div id="content">
+			<fieldset>
+				<legend><b style="color: #242d3e; background-color: white; border-radius: 6px; padding: 4px; font-family: 'Gill Sans', sans-serif;">More Info</b></legend>
+				<div class="inputs">
+				<div>
+					<a href="https://grupo22.cc3201.dcc.uchile.cl/Credits.html"> Credits </a>
+				</div>
+				<div>
+					<a href="https://grupo22.cc3201.dcc.uchile.cl/FAQ.html"> FAQ </a>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
